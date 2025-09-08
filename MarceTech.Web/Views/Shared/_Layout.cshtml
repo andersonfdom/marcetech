@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+    var userName = "Anderson Fernando Domingos";
+    var dataAtual = DateTime.Now.ToShortDateString();
+    var horaAtual = DateTime.Now.ToLongTimeString();
+    var ultimoAcesso = $"Último acesso: {dataAtual} {horaAtual}";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarceTech</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="~/img/logo.jpg" alt="MarceTech" />
+        </div>
+
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="has-submenu">
+                    <a href="#">Cadastros</a>
+                    <ul class="submenu">
+                        <li><a asp-controller="Clientes" asp-action="Index">Clientes</a></li>
+                        <li><a asp-controller="Materiais" asp-action="Index">Materiais</a></li>
+                        <li><a asp-controller="Ambientes" asp-action="Index">Ambientes</a></li>
+                        <li><a asp-controller="Categorias" asp-action="Index">Categorias</a></li>
+                    </ul>
+                </li>
+                <li><a asp-controller="Orcamento" asp-action="Listar">Orçamentos</a></li>
+                <li><a asp-controller="Contrato" asp-action="Listar">Contratos</a></li>
+                <li class="has-submenu">
+                    <a href="#">Gestão</a>
+                    <ul class="submenu">
+                        <li><a asp-controller="Comercial" asp-action="Index">Gestão Comercial</a></li>
+                        <li><a asp-controller="Producao" asp-action="Index">Gestão de Produção</a></li>
+                        <li><a asp-controller="Cronograma" asp-action="Index">Gestão de Cronograma</a></li>
+                    </ul>
+                </li>
+                <li><a asp-controller="Home" asp-action="Login">Sair</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <header style="background-color:white;color:black">
+            <div class="user-info">
+                <div style="padding-left: calc(10% + 20px);">Bem-vindo, @userName. <p>@ultimoAcesso</p></div>
+            </div>
+        </header>
+
+        <main class="content">
+            @RenderBody()
+        </main>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            sidebar.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.querySelectorAll('.has-submenu > a').forEach(function (menuLink) {
+            menuLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const submenu = this.nextElementSibling;
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

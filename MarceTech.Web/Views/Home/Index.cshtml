@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Dashboard - MarceTech</h1>
+
+<div class="dashboard">
+    <div class="card">
+        <h3>Orçamentos</h3>
+        <p>Total em aberto: <strong>5</strong></p>
+        <p>Último criado: <strong>29/08/2025</strong></p>
+        <a asp-controller="Orcamento" asp-action="Index">Ver todos</a>
+    </div>
+
+    <div class="card">
+        <h3>Contratos</h3>
+        <p>Ativos: <strong>3</strong></p>
+        <p>Último fechado: <strong>28/08/2025</strong></p>
+        <a asp-controller="Contrato" asp-action="Index">Ver todos</a>
+    </div>
+
+    <div class="card">
+        <h3>Clientes</h3>
+        <p>Cadastrados: <strong>18</strong></p>
+        <p>Novos este mês: <strong>2</strong></p>
+        <a asp-controller="Clientes" asp-action="Index">Gerenciar</a>
+    </div>
+
+    <div class="card">
+        <h3>Materiais</h3>
+        <p>Cadastrados: <strong>42</strong></p>
+        <p>Última atualização: <strong>25/08/2025</strong></p>
+        <a asp-controller="Materiais" asp-action="Index">Gerenciar</a>
+    </div>
+</div>
+
+<div class="card noticias">
+    <h3>Portal de Notícias</h3>
+    <ul>
+        <li>📌 Alteração de preços em ferragens a partir de <strong>01/09/2025</strong></li>
+        <li>📌 Promoções de revendas disponíveis</li>
+        <li>📌 Nova versão do sistema liberada</li>
+    </ul>
+</div>
