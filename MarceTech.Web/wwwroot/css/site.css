@@ -1,12 +1,15 @@
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Layout principal */
 body {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     min-height: 100vh;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
@@ -15,7 +18,7 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
+    width: clamp(200px, 25%, 250px);
     background-color: #ffffff;
     color: #1A237E;
     padding: 20px;
@@ -46,8 +49,10 @@ nav ul {
             transition: background-color 0.3s ease;
         }
 
-            nav ul li a:hover {
+            nav ul li a:hover,
+            nav ul li a:focus {
                 background-color: #f0f0f0;
+                outline: none;
             }
 
 /* Submenu */
@@ -60,11 +65,12 @@ nav ul {
         font-weight: normal;
     }
 
-/* Main */
+/* Área principal */
 .main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 /* Topbar */
@@ -74,9 +80,10 @@ nav ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
 }
 
-/* Contêiner para o nome e a data */
+/* Informações do usuário */
 .user-info {
     display: flex;
     flex-direction: column;
@@ -99,11 +106,16 @@ nav ul {
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 20px;
+    padding: 10px 14px;
+    font-size: 24px;
     cursor: pointer;
     z-index: 1100;
 }
+
+    .menu-toggle:focus {
+        outline: 2px solid #ffffff;
+        outline-offset: 2px;
+    }
 
 /* Overlay */
 .overlay {
@@ -129,7 +141,7 @@ nav ul {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 16px;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
@@ -153,11 +165,49 @@ nav ul {
         font-weight: bold;
     }
 
-        .dashboard-section a:hover {
+        .dashboard-section a:hover,
+        .dashboard-section a:focus {
             text-decoration: underline;
+            outline: none;
         }
 
-/* Responsivo */
+/* Campo de busca */
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+/* Tabela */
+#myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+    #myTable th,
+    #myTable td {
+        text-align: left;
+        padding: 12px;
+        word-break: break-word;
+    }
+
+    #myTable tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #myTable tr.header{
+            background-color: #1A237E;
+            color: white;
+        }
+
+/* Responsivo: tablets */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -192,7 +242,7 @@ nav ul {
     .main {
         width: 100%;
         margin-left: 0;
-        padding-top: 60px;
+        padding-top: 70px;
     }
 
     .menu-toggle {
@@ -204,4 +254,57 @@ nav ul {
         gap: 15px;
         padding: 15px;
     }
+
+    #myTable {
+        display: table;
+        width: 100%;
+        overflow-x: unset;
+    }
 }
+
+/* Responsivo: celulares */
+@media (max-width: 480px) {
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .user-info {
+        align-items: flex-start;
+        font-size: 14px;
+    }
+
+    .dashboard {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    #myInput {
+        font-size: 14px;
+        padding: 10px 16px 10px 36px;
+    }
+
+    #myTable {
+        font-size: 16px;
+    }
+}
+.btn-edit,
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 4px;
+}
+
+    .btn-edit:hover {
+        background-color: #e3f2fd;
+        border-radius: 4px;
+    }
+
+    .btn-delete:hover {
+        background-color: #ffebee;
+        border-radius: 4px;
+    }

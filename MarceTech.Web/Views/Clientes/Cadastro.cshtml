@@ -1,0 +1,505 @@
+﻿@model MarceTech.Web.Controllers.ClienteModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+<form id="formCliente">
+    <fieldset>
+        <legend>Dados do Cliente</legend>
+        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+        <div class="row">
+            @{
+                if (Model.Id == 0)
+                {
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="pf" name="TipoPessoa" value="false" checked />
+                            <label class="form-check-label" for="pf">Pessoa Física</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="pj" name="TipoPessoa" value="true" />
+                            <label class="form-check-label" for="pj">Pessoa Jurídica</label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (Model.TipoPessoa == false)
+                    {
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="pf" name="TipoPessoa" value="false" checked />
+                                <label class="form-check-label" for="pf">Pessoa Física</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="pj" name="TipoPessoa" value="true" />
+                                <label class="form-check-label" for="pj">Pessoa Jurídica</label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="pf" name="TipoPessoa" value="false" />
+                                <label class="form-check-label" for="pf">Pessoa Física</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="pj" name="TipoPessoa" value="true" checked />
+                                <label class="form-check-label" for="pj">Pessoa Jurídica</label>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+        <div class="row">
+            <div class="mb-3 mt-3">
+                @{
+                    if (Model.Id > 0)
+                    {
+                        if (Model.TipoPessoa == false)
+                        {
+                            <label id="lblNome" for="Nome" class="form-label">Nome</label>
+                        }
+                        else
+                        {
+                            <label id="lblNome" for="Nome" class="form-label">Razão Social</label>
+                        }
+                    }
+                    else
+                    {
+                        <label id="lblNome" for="Nome" class="form-label">Nome</label>
+                    }
+                }
+                <input type="text" class="form-control" id="Nome" name="Nome" value="@Model.Nome" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                @{
+                    if (Model.Id > 0)
+                    {
+                        if (Model.TipoPessoa == false)
+                        {
+                            <label id="lblCpfCnpj" for="Cpfcnpj" class="form-label">CPF</label>
+                        }
+                        else
+                        {
+                            <label id="lblCpfCnpj" for="Cpfcnpj" class="form-label">CNPJ</label>
+                        }
+                    }
+                    else
+                    {
+                        <label id="lblCpfCnpj" for="Cpfcnpj" class="form-label">CPF</label>
+                    }
+                }
+                <input type="text" class="form-control" id="Cpfcnpj" name="Cpfcnpj" value="@Model.Cpfcnpj" onblur="validarCampoCpfCnpj()" />
+                <span id="mensagemErro" style="color:red;"></span>
+
+            </div>
+            <div class="col">
+                @{
+                    if (Model.Id > 0)
+                    {
+                        if (Model.TipoPessoa == false)
+                        {
+                            <label id="lblRg" for="Rg" class="form-label" style="display:block">RG</label>
+                            <input type="text" class="form-control" id="Rg" name="Rg" value="@Model.Rg" style="display:block" />
+                        }
+                        else
+                        {
+                            <label id="lblRg" for="Rg" class="form-label" style="display:none">RG</label>
+                            <input type="text" class="form-control" id="Rg" name="Rg" value="@Model.Rg" style="display:none" />
+                        }
+                    }
+                    else
+                    {
+                        <label id="lblRg" for="Rg" class="form-label" style="display:block">RG</label>
+                        <input type="text" class="form-control" id="Rg" name="Rg" value="@Model.Rg" style="display:block" />
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="Telefone" name="Telefone" maxlength="15" value="@Model.Telefone" />
+            </div>
+            <div class="col">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Cep" class="form-label">CEP</label>
+                <input type="text" class="form-control" id="Cep" name="Cep" maxlength="9" value="@Model.Cep" />
+            </div>
+            <div class="col">
+                <label for="Logradouro" class="form-label">Logradouro</label>
+                <input type="text" class="form-control" id="Logradouro" name="Logradouro" value="@Model.Logradouro" disabled />
+            </div>
+            <div class="col">
+                <label for="NumeroLogradouro" class="form-label">Número</label>
+                <input type="text" class="form-control" id="NumeroLogradouro" name="NumeroLogradouro" value="@Model.NumeroLogradouro" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Complemento" class="form-label">Complemento</label>
+                <input class="form-control" type="text" id="Complemento" name="Complemento" value="@Model.Complemento" />
+            </div>
+            <div class="col">
+                <label for="Bairro" class="form-label">Bairro</label>
+                <input class="form-control" type="text" id="Bairro" name="Bairro" value="@Model.Bairro" disabled />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Cidade" class="form-label">Cidade</label>
+                <input class="form-control" type="text" id="Cidade" name="Cidade" value="@Model.Cidade" disabled />
+            </div>
+            <div class="col">
+                <label for="Estado" class="form-label">Estado</label>
+                <input class="form-control" type="text" id="Estado" name="Estado" value="@Model.Estado" disabled />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 mt-3">
+                <input type="button" id="btnSalvar" class="btn btn-success" value="Gravar" onclick="GravarDados();" />
+                <input type="button" id="btnCancelar" class="btn btn-danger" value="Cancelar" onclick="window.location.href = '@Url.Action("Index", "Clientes")'" />
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
+<script>
+    function GravarDados(){
+        const mensagemSucesso = document.getElementById('msgSucesso');
+        const mensagemErro = document.getElementById('msgErro');
+        const form = document.getElementById('formCliente');
+        const formData = new FormData(form);
+
+            const camposVazios = [];
+
+        // Seleciona todos os inputs, selects e textareas visíveis
+        const campos = form.querySelectorAll('input:not([type=hidden]):not([type=button]), select, textarea');
+
+        campos.forEach(campo => {
+            // Ignora campos ocultos ou desabilitados
+            if (!campo.disabled && campo.offsetParent !== null) {
+                const valor = campo.value.trim();
+                const tipo = campo.type;
+
+                // Para radio, verifica se algum do grupo está marcado
+                if (tipo === "radio") {
+                    const grupo = form.querySelectorAll(`input[name="${campo.name}"]`);
+                    const algumMarcado = Array.from(grupo).some(r => r.checked);
+                    if (!algumMarcado) {
+                        const label = form.querySelector(`label[for="${campo.id}"]`);
+                        if (label) camposVazios.push(label.textContent);
+                    }
+                } else if (valor === "") {
+                    const label = form.querySelector(`label[for="${campo.id}"]`);
+                    if (label) camposVazios.push(label.textContent);
+                }
+            }
+        });
+
+        if (camposVazios.length > 0) {
+            mensagemErro.textContent = "Preencha os seguintes campos:\n" + camposVazios.join("\n");
+            mensagemErro.style.display = 'block';
+            mensagemSucesso.style.display = 'none';
+            mensagemSucesso.textContent = '';
+ 
+            return;
+        }
+
+        fetch('/Clientes/GravarDados', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(msg => {
+            if(msg === 'Dados Cliente salvo com sucesso!'){
+               mensagemSucesso.textContent = msg;
+               mensagemSucesso.style.display = 'block';
+               mensagemErro.style.display = 'none';
+               mensagemErro.textContent = '';
+            }else{
+               mensagemErro.textContent = msg;
+               mensagemErro.style.display = 'block';
+               mensagemSucesso.style.display = 'none';
+               mensagemSucesso.textContent = '';
+            }
+
+            window.setTimeout(function(){
+                window.location.href = "/Clientes/Index";
+            },3000);
+        })
+        .catch(error => {
+            mensagemErro.textContent = 'Erro ao gravar os dados.';
+            mensagemErro.style.display = 'block';
+            mensagemSucesso.style.display = 'none';
+        });
+    }
+
+    function validarCampoCpfCnpj() {
+        const valor = document.getElementById("Cpfcnpj").value.replace(/\D/g, '');
+        const tipoPessoa = document.querySelector('input[name="TipoPessoa"]:checked').value;
+        const mensagem = document.getElementById("mensagemErro");
+
+        if (tipoPessoa === "false") {
+            // Pessoa Física → CPF
+            if (valor.length !== 11 || !validarCPF(valor)) {
+                mensagem.textContent = "CPF inválido.";
+                document.getElementById("Cpfcnpj").focus();
+            } else {
+                mensagem.textContent = "";
+            }
+        } else {
+            // Pessoa Jurídica → CNPJ
+            if (valor.length !== 14 || !validarCNPJ(valor)) {
+                mensagem.textContent = "CNPJ inválido.";
+                document.getElementById("Cpfcnpj").focus();
+            } else {
+                mensagem.textContent = "";
+            }
+        }
+    }
+
+    function validarCPF(cpf) {
+        let soma = 0;
+        let resto;
+
+        if (cpf === "00000000000") return false;
+
+        for (let i = 1; i <= 9; i++)
+            soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+        resto = (soma * 10) % 11;
+
+        if ((resto === 10) || (resto === 11)) resto = 0;
+        if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+        soma = 0;
+        for (let i = 1; i <= 10; i++)
+            soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+        resto = (soma * 10) % 11;
+
+        if ((resto === 10) || (resto === 11)) resto = 0;
+        return resto === parseInt(cpf.substring(10, 11));
+    }
+
+    function validarCNPJ(cnpj) {
+        if (cnpj === "00000000000000") return false;
+
+        let tamanho = cnpj.length - 2;
+        let numeros = cnpj.substring(0, tamanho);
+        let digitos = cnpj.substring(tamanho);
+        let soma = 0;
+        let pos = tamanho - 7;
+
+        for (let i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2) pos = 9;
+        }
+
+        let resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado !== parseInt(digitos.charAt(0))) return false;
+
+        tamanho += 1;
+        numeros = cnpj.substring(0, tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+
+        for (let i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2) pos = 9;
+        }
+
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        return resultado === parseInt(digitos.charAt(1));
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('msgSucesso').style.display = 'none';
+        document.getElementById('msgErro').style.display = 'none';
+
+        const pfRadio = document.getElementById("pf");
+        const pjRadio = document.getElementById("pj");
+
+        const lblNome = document.getElementById("lblNome");
+        const lblCpfCnpj = document.getElementById("lblCpfCnpj");
+        const lblRg = document.getElementById("lblRg");
+        const rgInput = document.getElementById("Rg");
+        const cpfcnpjInput = document.getElementById("Cpfcnpj");
+
+        const cepInput = document.getElementById("Cep");
+        const telefoneInput = document.getElementById("Telefone");
+        const numeroInput = document.getElementById("NumeroLogradouro");
+
+        if(document.getElementById('Id').value > 0){
+            buscarCepCadastrado(cepInput);
+        } 
+
+        function aplicarMascara(valor, tipo) {
+            valor = valor.replace(/\D/g, "");
+
+            if (tipo === "cpf") {
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+                valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+                valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            } else if (tipo === "cnpj") {
+                valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+                valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+                valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+                valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+            } else if (tipo === "cep") {
+                valor = valor.replace(/^(\d{5})(\d)/, "$1-$2");
+            } else if (tipo === "telefone") {
+                valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+                valor = valor.replace(/(\d{4,5})(\d{4})$/, "$1-$2");
+            }
+
+            return valor;
+        }
+
+        function atualizarFormulario() {
+            if (pfRadio.checked) {
+                lblNome.textContent = "Nome";
+                lblCpfCnpj.textContent = "CPF";
+                lblRg.style.display = "inline";
+                rgInput.style.display = "inline";
+                cpfcnpjInput.setAttribute("maxlength", "14");
+            } else if (pjRadio.checked) {
+                lblNome.textContent = "Razão Social";
+                lblCpfCnpj.textContent = "CNPJ";
+                lblRg.style.display = "none";
+                rgInput.style.display = "none";
+                cpfcnpjInput.setAttribute("maxlength", "18");
+            }
+        }
+
+        function formatarCpfCnpj() {
+            const tipo = pfRadio.checked ? "cpf" : "cnpj";
+            cpfcnpjInput.value = aplicarMascara(cpfcnpjInput.value, tipo);
+        }
+
+        function formatarCep() {
+            cepInput.value = aplicarMascara(cepInput.value, "cep");
+        }
+
+        function formatarTelefone() {
+            telefoneInput.value = aplicarMascara(telefoneInput.value, "telefone");
+        }
+
+        function bloquearNaoNumericos(event) {
+            const tecla = event.key;
+            if (!/\d/.test(tecla) && tecla !== "Backspace" && tecla !== "Tab") {
+                event.preventDefault();
+            }
+        }
+
+        pfRadio.addEventListener("change", atualizarFormulario);
+        pjRadio.addEventListener("change", atualizarFormulario);
+        cpfcnpjInput.addEventListener("input", formatarCpfCnpj);
+        cepInput.addEventListener("input", formatarCep);
+        telefoneInput.addEventListener("input", formatarTelefone);
+        numeroInput.addEventListener("keypress", bloquearNaoNumericos);
+
+        atualizarFormulario();
+    });
+    document.getElementById("Cep").addEventListener("blur", function () {
+        buscarCepCadastrado(this);
+    });
+
+    function buscarCepCadastrado(valorCep){
+        const cep = valorCep.value.replace(/\D/g, "");
+
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!("erro" in data)) {
+                         ["Logradouro", "Bairro", "Cidade", "Estado"].forEach(id => {
+                            document.getElementById(id).disabled = true;
+                        });
+                        document.getElementById("Logradouro").value = data.logradouro;
+                        document.getElementById("Bairro").value = data.bairro;
+                        document.getElementById("Cidade").value = data.localidade;
+                        document.getElementById("Estado").value = nomeEstadoPorSigla(data.uf);
+                        document.getElementById("NumeroLogradouro").focus();
+                    } else {
+                        limparCamposEndereco();
+                    }
+                })
+                .catch(() => {
+                    limparCamposEndereco();
+                });
+        } else {
+            limparCamposEndereco();
+        }
+    }
+
+    function limparCamposEndereco() {
+        document.getElementById("Logradouro").value = "";
+        document.getElementById("Bairro").value = "";
+        document.getElementById("Cidade").value = "";
+        document.getElementById("Estado").value = "";
+        ["Logradouro", "Bairro", "Cidade", "Estado"].forEach(id => {
+            document.getElementById(id).disabled = false;
+        });
+    }
+
+    function nomeEstadoPorSigla(sigla) {
+        const estados = {
+            "AC": "Acre",
+            "AL": "Alagoas",
+            "AP": "Amapá",
+            "AM": "Amazonas",
+            "BA": "Bahia",
+            "CE": "Ceará",
+            "DF": "Distrito Federal",
+            "ES": "Espírito Santo",
+            "GO": "Goiás",
+            "MA": "Maranhão",
+            "MT": "Mato Grosso",
+            "MS": "Mato Grosso do Sul",
+            "MG": "Minas Gerais",
+            "PA": "Pará",
+            "PB": "Paraíba",
+            "PR": "Paraná",
+            "PE": "Pernambuco",
+            "PI": "Piauí",
+            "RJ": "Rio de Janeiro",
+            "RN": "Rio Grande do Norte",
+            "RS": "Rio Grande do Sul",
+            "RO": "Rondônia",
+            "RR": "Roraima",
+            "SC": "Santa Catarina",
+            "SP": "São Paulo",
+            "SE": "Sergipe",
+            "TO": "Tocantins"
+        };
+
+        return estados[sigla.toUpperCase()] || "Sigla inválida";
+    }
+</script>
+

@@ -28,12 +28,8 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Projetos/marcetech/MarceTech.Web/Views/Ambientes/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW1iaWVudGVzXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/marcetech/MarceTech.Web/Views/Categorias/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
+[D:/Projetos/marcetech/MarceTech.Web/Views/Clientes/Cadastro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ2FkYXN0cm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/marcetech/MarceTech.Web/Views/Clientes/Index.cshtml]
