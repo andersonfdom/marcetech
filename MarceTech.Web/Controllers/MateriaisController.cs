@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MarceTech.Web.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 
 namespace MarceTech.Web.Controllers
 {

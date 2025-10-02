@@ -4,12 +4,7 @@ namespace MarceTech.Web.Controllers
 {
     public class ContratoController : Controller
     {
-        public IActionResult Gerar()
-        {
-            return View();
-        }
-
-        public IActionResult Listar()
+        public IActionResult Index()
         {
             return View();
         }

@@ -1,6 +1,12 @@
+wwwroot\css\login.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\email.svg
+wwwroot\img\eye-off.svg
+wwwroot\img\eye.svg
+wwwroot\img\lock.svg
 wwwroot\img\logo.jpg
+wwwroot\img\vazio.webp
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

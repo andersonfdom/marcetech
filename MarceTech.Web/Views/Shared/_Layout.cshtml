@@ -39,8 +39,8 @@
                         <li><a asp-controller="Materiais" asp-action="Index">Materiais</a></li>
                     </ul>
                 </li>
-                <li><a asp-controller="Orcamento" asp-action="Listar">Orçamentos</a></li>
-                <li><a asp-controller="Contrato" asp-action="Listar">Contratos</a></li>
+                <li><a asp-controller="Orcamento" asp-action="Index">Orçamentos</a></li>
+                <li><a asp-controller="Contrato" asp-action="Index">Contratos</a></li>
                 <li class="has-submenu">
                     <a href="#">Gestão</a>
                     <ul class="submenu">
@@ -71,12 +71,6 @@
                         <button id="btnSimExcluir" class="btn btn-success">Sim</button>
                         <button class="btn btn-danger" onclick="fecharModal();">Não</button>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="mb-3 mt-3">
-                    <div id="msgSucesso" class="alert alert-success" style="display:none;"></div>
-                    <div id="msgErro" class="alert alert-danger" style="display:none;"></div>
                 </div>
             </div>
             @RenderBody()

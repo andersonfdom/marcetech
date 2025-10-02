@@ -19,8 +19,10 @@ namespace MarceTech.Web.Controllers
                         {
                             Id = c.Id,
                             Nome = c.Nome,
-                            Telefone = c.Telefone
-                            // Adicione os campos que quiser exibir
+                            Telefone = c.Telefone,
+                            Email = c.Email,
+                            Cidade = c.Cidade,
+                            Estado = c.Estado
                         })
                         .ToList();
                 }
@@ -83,12 +85,38 @@ namespace MarceTech.Web.Controllers
         }
 
         [HttpPost]
-        public string GravarDados([FromForm] ClienteModel clienteModel)
+        public IActionResult GravarDados([FromForm] ClienteModel clienteModel)
         {
-            bool novoRegistro;
+            // Validação de dados no servidor
+            if (string.IsNullOrWhiteSpace(clienteModel.Nome))
+            {
+                // Se o nome estiver vazio, você pode retornar a view com uma mensagem de erro.
+                TempData["MensagemErro"] = "O nome é obrigatório.";
+                return View("Cadastro", clienteModel);
+            }
+
+            // Adicione aqui as validações de CPF/CNPJ, CEP, etc.
+            // Exemplo de validação de CPF/CNPJ (assumindo que você tenha um método para isso)
+            if (clienteModel.TipoPessoa == false) // Pessoa Física
+            {
+                if (string.IsNullOrWhiteSpace(clienteModel.Cpfcnpj) || !ValidarCPF(clienteModel.Cpfcnpj))
+                {
+                    TempData["MensagemErro"] = "CPF inválido.";
+                    return View("Cadastro", clienteModel);
+                }
+            }
+            else // Pessoa Jurídica
+            {
+                if (string.IsNullOrWhiteSpace(clienteModel.Cpfcnpj) || !ValidarCNPJ(clienteModel.Cpfcnpj))
+                {
+                    TempData["MensagemErro"] = "CNPJ inválido.";
+                    return View("Cadastro", clienteModel);
+                }
+            }
 
             try
             {
+                bool novoRegistro;
                 using (MarceTechContext ctx = new MarceTechContext())
                 {
                     var cliente = ctx.Clientes.FirstOrDefault(c => c.Id == clienteModel.Id);
@@ -103,9 +131,10 @@ namespace MarceTech.Web.Controllers
                         cliente = new Cliente();
                     }
 
+                    // Mapeamento dos dados do Model para a Entidade
                     cliente.TipoPessoa = clienteModel.TipoPessoa;
                     cliente.Nome = clienteModel.Nome;
-                    cliente.Rg = clienteModel.TipoPessoa == true? "": clienteModel.Rg;
+                    cliente.Rg = clienteModel.TipoPessoa == true ? "" : clienteModel.Rg;
                     cliente.Cpfcnpj = clienteModel.Cpfcnpj;
                     cliente.Telefone = clienteModel.Telefone;
                     cliente.Email = clienteModel.Email;
@@ -117,7 +146,7 @@ namespace MarceTech.Web.Controllers
                     cliente.Cidade = clienteModel.Cidade;
                     cliente.Estado = clienteModel.Estado;
 
-                    if (novoRegistro == true)
+                    if (novoRegistro)
                     {
                         ctx.Clientes.Add(cliente);
                     }
@@ -128,41 +157,131 @@ namespace MarceTech.Web.Controllers
 
                     ctx.SaveChanges();
 
-                    return "Dados Cliente salvo com sucesso!";
+                    TempData["MensagemSucesso"] = "Dados do Cliente salvos com sucesso!";
+                    return RedirectToAction("Index"); // Redireciona para a página de listagem de clientes
                 }
             }
             catch (Exception e)
             {
-                return "Erro ao gravar dados Cliente: " + e.InnerException.Message.ToString();
+                TempData["MensagemErro"] = $"Erro ao gravar dados do Cliente: {e.Message}";
+                return View("Cadastro", clienteModel);
             }
         }
 
-        [HttpPost]
-        public string ExcluirDados(int id)
+        private bool ValidarCPF(string cpf)
+        {
+            // Remove caracteres não numéricos.
+            cpf = cpf.Trim().Replace(".", "").Replace("-", "");
+
+            if (cpf.Length != 11)
+                return false;
+
+            // Se todos os dígitos forem iguais, o CPF é inválido.
+            if (new string(cpf[0], 11) == cpf)
+                return false;
+
+            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            string tempCpf;
+            string digito;
+            int soma;
+            int resto;
+
+            tempCpf = cpf.Substring(0, 9);
+            soma = 0;
+            for (int i = 0; i < 9; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
+            resto = soma % 11;
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCpf = tempCpf + digito;
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
+            resto = soma % 11;
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+
+            return cpf.EndsWith(digito);
+        }
+
+        private bool ValidarCNPJ(string cnpj)
+        {
+            // Remove caracteres não numéricos.
+            cnpj = cnpj.Trim().Replace(".", "").Replace("-", "").Replace("/", "");
+
+            if (cnpj.Length != 14)
+                return false;
+
+            // Se todos os dígitos forem iguais, o CNPJ é inválido.
+            if (new string(cnpj[0], 14) == cnpj)
+                return false;
+
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            string tempCnpj;
+            string digito;
+            int soma;
+            int resto;
+
+            tempCnpj = cnpj.Substring(0, 12);
+            soma = 0;
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCnpj = tempCnpj + digito;
+
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+
+            return cnpj.EndsWith(digito);
+        }
+
+        public IActionResult Excluir(int id)
         {
             try
             {
-                using (MarceTechContext ctx = new MarceTechContext())
+                using (var ctx = new MarceTechContext())
                 {
                     var cliente = ctx.Clientes.FirstOrDefault(c => c.Id == id);
-
                     if (cliente != null)
                     {
                         ctx.Clientes.Remove(cliente);
                         ctx.SaveChanges();
-
-                        return "Cliente excluído com sucesso!";
+                        TempData["MensagemSucesso"] = "Cliente excluído com sucesso!";
                     }
                     else
                     {
-                        return "Cliente não encontrado!";
+                        TempData["MensagemErro"] = "Cliente não encontrado.";
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return "Erro ao excluir dados Cliente: " + e.InnerException.Message.ToString();
+                TempData["MensagemErro"] = "Erro ao excluir cliente: " + ex.Message;
             }
+
+            // Redireciona de volta para a lista de clientes (Index)
+            return RedirectToAction("Index");
         }
     }
 

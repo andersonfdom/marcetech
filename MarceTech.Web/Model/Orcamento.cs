@@ -9,15 +9,11 @@ public partial class Orcamento
 
     public int IdCliente { get; set; }
 
-    public int IdVendedor { get; set; }
-
-    public int IdLoja { get; set; }
-
     public DateTime? DataOrcamento { get; set; }
 
+    public string? Responsavel { get; set; }
+
+    public string? StatusOrcamento { get; set; }
+
     public virtual Cliente IdClienteNavigation { get; set; } = null!;
-
-    public virtual Loja IdLojaNavigation { get; set; } = null!;
-
-    public virtual Vendedore IdVendedorNavigation { get; set; } = null!;
 }

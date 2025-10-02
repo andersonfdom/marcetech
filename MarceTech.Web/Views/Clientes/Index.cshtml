@@ -5,8 +5,7 @@
 
 <h1>Clientes</h1>
 
-<input type="search" id="myInput" />
-<input type="hidden" id="IdExclusao" value="0" />
+<input type="search" id="inputClientes" placeholder="Buscar Clientes" class="myinput" />
 
 <table id="myTable">
     <tr class="header">
@@ -15,153 +14,39 @@
         </th>
         <th style="width:25%;">Nome</th>
         <th style="width:15%;">Telefone</th>
-        <th style="width:25%;">Responsável</th>
-        <th style="width:10%;">Data de Criação</th>
-        <th style="width:20%;">Status</th>
+        <th style="width:25%;">Email</th>
+        <th style="width:10%;">Cidade</th>
+        <th style="width:20%;">Uf</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                <button class="btn-edit" title="Editar" onclick="EditarDados(@item.Id);">
+                <a class="btn-edit" title="Editar" href="@Url.Action("Cadastro", "Clientes", new { id = item.Id })">
                     <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Editar" width="20">
-                </button>
-                <button class="btn-delete" title="Excluir" onclick="ExcluirDados(@item.Id);">
+                </a>
+
+                <a class="btn-delete" title="Excluir" href="@Url.Action("Excluir", "Clientes", new { id = item.Id })" onclick="return confirm('Tem certeza que deseja excluir este cliente?');">
                     <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Excluir" width="20">
-                </button>
+                </a>
             </td>
             <td>@item.Nome</td>
             <td>@item.Telefone</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>@item.Email</td>
+            <td>@item.Cidade</td>
+            <td>@item.Estado</td>
         </tr>
     }
 </table>
-
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.5);
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 20px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 500px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-        .close:hover {
-            color: black;
-        }
-
-    label, h2 {
-        color: #000000;
-    }
-
-</style>
-
 <script>
-        function BuscarClientes(){
-            // Declare variables
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
+        document.getElementById("inputClientes").addEventListener("keyup", function () {
+            var input = this.value.toLowerCase();
+            var rows = document.querySelectorAll("#myTable tr:not(.header)");
 
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-              td = tr[i].getElementsByTagName("td")[0];
-              if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                  tr[i].style.display = "";
-                } else {
-                  tr[i].style.display = "none";
-                }
-              }
-            }
-        }
-
-        function EditarDados(id){
-            window.location.href = "/Clientes/Cadastro?id=" + id;
-        }
-
-        function ExcluirDados(id){
-            const mensagemSucesso = document.getElementById('msgSucesso');
-            const mensagemErro = document.getElementById('msgErro');
-
-            document.getElementById('modalExclusao').style.display = 'block';
-            const idExclusao = document.getElementById('IdExclusao');
-
-            idExclusao.value = id;
-
-            document.getElementById("btnSimExcluir").addEventListener("click", function() {
-                document.getElementById('modalExclusao').style.display = 'none';
-                fetch('/Clientes/ExcluirDados?id=' + id, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                body: JSON.stringify({ id: idExclusao.value })
-                })
-               .then(response => response.text())
-               .then(msg => {
-                    if(msg === 'Cliente excluído com sucesso!'){
-                       mensagemSucesso.textContent = msg;
-                       mensagemSucesso.style.display = 'block';
-                       mensagemErro.style.display = 'none';
-                       mensagemErro.textContent = '';
-                    }else{
-                       mensagemErro.textContent = msg;
-                       mensagemErro.style.display = 'block';
-                       mensagemSucesso.style.display = 'none';
-                       mensagemSucesso.textContent = '';
-                    }
-
-                    window.setTimeout(function(){
-                        window.location.href = "/Clientes/Index";
-                    },1500);
-                })
-                .catch(error => {
-                    mensagemErro.textContent = 'Erro ao excluir os dados.';
-                    mensagemErro.style.display = 'block';
-                    mensagemSucesso.style.display = 'none';
-                });
-          });
-        }
-
-        document.getElementById("btnIncluir").addEventListener("click", function() {
-          document.getElementById("modal").style.display = "block";
-        });
-
-        document.getElementById("closeModal").addEventListener("click", function() {
-          document.getElementById("modal").style.display = "none";
-        });
-
-        window.addEventListener("click", function(event) {
-          if (event.target == document.getElementById("modal")) {
-            document.getElementById("modal").style.display = "none";
-          }
-        });
+            rows.forEach(function (row) {
+                var text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+    });
 
 </script>

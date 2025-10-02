@@ -172,7 +172,7 @@ nav ul {
         }
 
 /* Campo de busca */
-#myInput {
+.myinput {
     background-image: url('/css/searchicon.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
@@ -281,7 +281,7 @@ nav ul {
         gap: 10px;
     }
 
-    #myInput {
+    .myinput {
         font-size: 14px;
         padding: 10px 16px 10px 36px;
     }

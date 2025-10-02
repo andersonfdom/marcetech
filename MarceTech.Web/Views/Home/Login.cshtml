@@ -1,16 +1,106 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="pt-br">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acesso Restrito - MarceTech</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+    <style>
+        /* The alert message box */
+        .alert {
+            padding: 20px;
+            background-color: #f44336; /* Red */
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            /* When moving the mouse over the close button */
+            .closebtn:hover {
+                color: black;
+            }
+    </style>
+    <script>
+        function RealizarLogin(){
+            document.getElementById('alerta').style.display = 'none';
+            document.getElementById('mensagem').innerHTML  = "";
+            var xmlhttp = new XMLHttpRequest();
+            var theUrl = "/Home/LoginValido";
+
+            var data = {
+              login: document.getElementById('email').value,
+              senha: document.getElementById('senha').value
+            };
+
+            xmlhttp.open("POST", theUrl, true);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            // Quando a requisição for concluída
+            xmlhttp.onload = function () {
+              if (xmlhttp.status === 200) {
+                  var resposta = xmlhttp.responseText;
+
+                  if(resposta === 'Sucesso'){
+                     window.location.href = "/Home/Index";
+                  }else{
+                    document.getElementById('alerta').style.display = 'block';
+                    document.getElementById('mensagem').innerHTML  = resposta;
+                  }
+                //alert(xmlhttp.responseText); // Exibe a resposta da API
+              } else {
+                alert("Erro ao enviar: " + xmlhttp.status);
+              }
+            };
+
+            xmlhttp.send(JSON.stringify(data));
+        }
+
+    </script>
+
 </head>
 <body>
-    <h2>Teste</h2>
+    <div class="login-container">
+        <img src="~/img/logo.jpg" alt="adcweb logo" class="logo" />
+        <h2>Acesso Restrito</h2>
+
+        <form method="post" class="login-form">
+            <div class="input-icon-group">
+                <img src="~/img/email.svg" class="input-icon" />
+                <input type="email" id="email" class="form-login" placeholder="Entre com seu Email" required />
+            </div>
+
+            <div class="input-icon-group">
+                <img src="~/img/lock.svg" class="input-icon" />
+                <input type="password" id="senha" class="form-login" placeholder="Digite sua senha" required />
+                <button type="button" id="toggleSenha" class="toggle-icon" aria-label="Mostrar senha"></button>
+            </div>
+
+            <a href="#" class="recuperar">Recuperar senha</a>
+
+            <button type="button" class="login-btn" onclick="RealizarLogin();">Login</button>
+
+            <div id="alerta" class="alert" style="display:none">
+                <p id="mensagem">This is an alert box.</p>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        </form>
+    </div>
+
+    <script src="~/js/login.js"></script>
 </body>
 </html>

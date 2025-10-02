@@ -3,7 +3,16 @@
 @{
     ViewData["Title"] = "Cadastro";
 }
-<form id="formCliente">
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["MensagemErro"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form id="formCliente" action="@Url.Action("GravarDados", "Clientes")" method="post">
     <fieldset>
         <legend>Dados do Cliente</legend>
         <input type="hidden" id="Id" name="Id" value="@Model.Id" />
@@ -79,7 +88,7 @@
                         <label id="lblNome" for="Nome" class="form-label">Nome</label>
                     }
                 }
-                <input type="text" class="form-control" id="Nome" name="Nome" value="@Model.Nome" />
+                <input type="text" class="form-control" id="Nome" name="Nome" value="@Model.Nome" required/>
             </div>
         </div>
 
@@ -102,9 +111,7 @@
                         <label id="lblCpfCnpj" for="Cpfcnpj" class="form-label">CPF</label>
                     }
                 }
-                <input type="text" class="form-control" id="Cpfcnpj" name="Cpfcnpj" value="@Model.Cpfcnpj" onblur="validarCampoCpfCnpj()" />
-                <span id="mensagemErro" style="color:red;"></span>
-
+                <input type="text" class="form-control" id="Cpfcnpj" name="Cpfcnpj" value="@Model.Cpfcnpj" required />
             </div>
             <div class="col">
                 @{
@@ -133,131 +140,61 @@
         <div class="row">
             <div class="col">
                 <label for="Telefone" class="form-label">Telefone</label>
-                <input type="text" class="form-control" id="Telefone" name="Telefone" maxlength="15" value="@Model.Telefone" />
+                <input type="text" class="form-control" id="Telefone" name="Telefone" maxlength="15" value="@Model.Telefone" required />
             </div>
             <div class="col">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" />
+                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" required />
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label for="Cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="Cep" name="Cep" maxlength="9" value="@Model.Cep" />
+                <input type="text" class="form-control" id="Cep" name="Cep" maxlength="9" value="@Model.Cep" required />
             </div>
             <div class="col">
                 <label for="Logradouro" class="form-label">Logradouro</label>
-                <input type="text" class="form-control" id="Logradouro" name="Logradouro" value="@Model.Logradouro" disabled />
+                <input type="text" class="form-control" id="Logradouro" name="Logradouro" value="@Model.Logradouro" required />
             </div>
             <div class="col">
                 <label for="NumeroLogradouro" class="form-label">Número</label>
-                <input type="text" class="form-control" id="NumeroLogradouro" name="NumeroLogradouro" value="@Model.NumeroLogradouro" />
+                <input type="text" class="form-control" id="NumeroLogradouro" name="NumeroLogradouro" value="@Model.NumeroLogradouro" required />
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label for="Complemento" class="form-label">Complemento</label>
-                <input class="form-control" type="text" id="Complemento" name="Complemento" value="@Model.Complemento" />
+                <input class="form-control" type="text" id="Complemento" name="Complemento" value="@Model.Complemento" required />
             </div>
             <div class="col">
                 <label for="Bairro" class="form-label">Bairro</label>
-                <input class="form-control" type="text" id="Bairro" name="Bairro" value="@Model.Bairro" disabled />
+                <input class="form-control" type="text" id="Bairro" name="Bairro" value="@Model.Bairro" required />
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label for="Cidade" class="form-label">Cidade</label>
-                <input class="form-control" type="text" id="Cidade" name="Cidade" value="@Model.Cidade" disabled />
+                <input class="form-control" type="text" id="Cidade" name="Cidade" value="@Model.Cidade" required />
             </div>
             <div class="col">
                 <label for="Estado" class="form-label">Estado</label>
-                <input class="form-control" type="text" id="Estado" name="Estado" value="@Model.Estado" disabled />
+                <input class="form-control" type="text" id="Estado" name="Estado" value="@Model.Estado" required />
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 mt-3">
-                <input type="button" id="btnSalvar" class="btn btn-success" value="Gravar" onclick="GravarDados();" />
+                <input type="submit" id="btnSalvar" class="btn btn-success" value="Gravar" />
                 <input type="button" id="btnCancelar" class="btn btn-danger" value="Cancelar" onclick="window.location.href = '@Url.Action("Index", "Clientes")'" />
             </div>
         </div>
     </fieldset>
 </form>
 
-
 <script>
-    function GravarDados(){
-        const mensagemSucesso = document.getElementById('msgSucesso');
-        const mensagemErro = document.getElementById('msgErro');
-        const form = document.getElementById('formCliente');
-        const formData = new FormData(form);
-
-            const camposVazios = [];
-
-        // Seleciona todos os inputs, selects e textareas visíveis
-        const campos = form.querySelectorAll('input:not([type=hidden]):not([type=button]), select, textarea');
-
-        campos.forEach(campo => {
-            // Ignora campos ocultos ou desabilitados
-            if (!campo.disabled && campo.offsetParent !== null) {
-                const valor = campo.value.trim();
-                const tipo = campo.type;
-
-                // Para radio, verifica se algum do grupo está marcado
-                if (tipo === "radio") {
-                    const grupo = form.querySelectorAll(`input[name="${campo.name}"]`);
-                    const algumMarcado = Array.from(grupo).some(r => r.checked);
-                    if (!algumMarcado) {
-                        const label = form.querySelector(`label[for="${campo.id}"]`);
-                        if (label) camposVazios.push(label.textContent);
-                    }
-                } else if (valor === "") {
-                    const label = form.querySelector(`label[for="${campo.id}"]`);
-                    if (label) camposVazios.push(label.textContent);
-                }
-            }
-        });
-
-        if (camposVazios.length > 0) {
-            mensagemErro.textContent = "Preencha os seguintes campos:\n" + camposVazios.join("\n");
-            mensagemErro.style.display = 'block';
-            mensagemSucesso.style.display = 'none';
-            mensagemSucesso.textContent = '';
- 
-            return;
-        }
-
-        fetch('/Clientes/GravarDados', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(msg => {
-            if(msg === 'Dados Cliente salvo com sucesso!'){
-               mensagemSucesso.textContent = msg;
-               mensagemSucesso.style.display = 'block';
-               mensagemErro.style.display = 'none';
-               mensagemErro.textContent = '';
-            }else{
-               mensagemErro.textContent = msg;
-               mensagemErro.style.display = 'block';
-               mensagemSucesso.style.display = 'none';
-               mensagemSucesso.textContent = '';
-            }
-
-            window.setTimeout(function(){
-                window.location.href = "/Clientes/Index";
-            },3000);
-        })
-        .catch(error => {
-            mensagemErro.textContent = 'Erro ao gravar os dados.';
-            mensagemErro.style.display = 'block';
-            mensagemSucesso.style.display = 'none';
-        });
-    }
 
     function validarCampoCpfCnpj() {
         const valor = document.getElementById("Cpfcnpj").value.replace(/\D/g, '');
@@ -339,8 +276,6 @@
 
 
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById('msgSucesso').style.display = 'none';
-        document.getElementById('msgErro').style.display = 'none';
 
         const pfRadio = document.getElementById("pf");
         const pjRadio = document.getElementById("pj");
@@ -357,7 +292,7 @@
 
         if(document.getElementById('Id').value > 0){
             buscarCepCadastrado(cepInput);
-        } 
+        } 
 
         function aplicarMascara(valor, tipo) {
             valor = valor.replace(/\D/g, "");
@@ -438,9 +373,6 @@
                 .then(response => response.json())
                 .then(data => {
                     if (!("erro" in data)) {
-                         ["Logradouro", "Bairro", "Cidade", "Estado"].forEach(id => {
-                            document.getElementById(id).disabled = true;
-                        });
                         document.getElementById("Logradouro").value = data.logradouro;
                         document.getElementById("Bairro").value = data.bairro;
                         document.getElementById("Cidade").value = data.localidade;
@@ -502,4 +434,3 @@
         return estados[sigla.toUpperCase()] || "Sigla inválida";
     }
 </script>
-

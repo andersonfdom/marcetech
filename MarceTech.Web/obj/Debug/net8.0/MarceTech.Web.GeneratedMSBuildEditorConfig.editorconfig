@@ -40,12 +40,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tZXJjaWFsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projetos/marcetech/MarceTech.Web/Views/Contrato/Gerar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cR2VyYXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/marcetech/MarceTech.Web/Views/Contrato/Listar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cTGlzdGFyLmNzaHRtbA==
+[D:/Projetos/marcetech/MarceTech.Web/Views/Contrato/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/marcetech/MarceTech.Web/Views/Cronograma/Index.cshtml]
@@ -64,12 +60,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projetos/marcetech/MarceTech.Web/Views/Orcamento/Gerar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXEdlcmFyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projetos/marcetech/MarceTech.Web/Views/Orcamento/Listar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXExpc3Rhci5jc2h0bWw=
+[D:/Projetos/marcetech/MarceTech.Web/Views/Orcamento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projetos/marcetech/MarceTech.Web/Views/Producao/Index.cshtml]

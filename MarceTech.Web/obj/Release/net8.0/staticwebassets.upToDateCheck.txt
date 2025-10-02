@@ -1,4 +1,4 @@
-wwwroot\css\site.css
+wwwroot\css\login.css
 wwwroot\favicon.ico
 wwwroot\img\logo.jpg
 wwwroot\js\site.js
@@ -59,3 +59,9 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\site.css
+wwwroot\img\email.svg
+wwwroot\img\eye-off.svg
+wwwroot\img\eye.svg
+wwwroot\img\lock.svg
+wwwroot\img\vazio.webp

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarceTech.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fdfd9289c4224d68f8a89be8a07e8de023058104")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d70d79db1aca6d99c1e565160093529e8cccf4c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarceTech.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarceTech.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
