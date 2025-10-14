@@ -1,0 +1,256 @@
+/* Layout principal */
+.app-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: clamp(200px, 25%, 250px);
+  background-color: #ffffff;
+  color: #1A237E;
+  padding: 20px;
+  transition: left 0.3s ease;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Menu */
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 0;
+}
+
+nav ul li a {
+  color: #1A237E;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #f0f0f0;
+  outline: none;
+}
+
+/* Submenu */
+.submenu {
+  padding-left: 20px;
+}
+
+.submenu li a {
+  font-weight: normal;
+}
+
+/* Área principal */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Botão hamburguer */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #1A237E;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-conteudo {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  animation: slideDown 0.4s ease;
+  position: relative;
+  text-align: center;
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.botoes {
+  margin-top: 20px;
+}
+
+.botoes button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .main {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 70px;
+  }
+}
+
+/* Estilos para ícones do menu */
+.menu-icon {
+  margin-right: 10px;
+  font-size: 16px;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.menu-label {
+  flex: 1;
+}
+
+.submenu-icon {
+  margin-right: 8px;
+  color: #1A237E;
+  font-weight: bold;
+}
+
+.submenu-label {
+  color: #1A237E;
+}
+
+/* Melhorar a aparência dos itens do menu */
+nav ul li a {
+  color: #1A237E;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #f0f0f0;
+  outline: none;
+  transform: translateX(5px);
+}
+
+/* Submenu com melhor aparência */
+.submenu {
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+.submenu li a {
+  font-weight: normal;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.submenu li a:hover {
+  background-color: #e8eaf6;
+  border-left-color: #1A237E;
+}
+
+/* Item ativo */
+nav ul li a.active {
+  background-color: #1A237E;
+  color: white;
+}
+
+nav ul li a.active .menu-icon,
+nav ul li a.active .submenu-icon {
+  color: white;
+}

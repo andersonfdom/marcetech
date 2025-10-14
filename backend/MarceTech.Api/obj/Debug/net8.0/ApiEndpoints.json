@@ -1,0 +1,208 @@
+[
+  {
+    "ContainingType": "MarceTech.Api.Controllers.AmbientesController",
+    "Method": "ListarAmbientes",
+    "RelativePath": "Ambientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.AmbientesController",
+    "Method": "GravarAmbiente",
+    "RelativePath": "Ambientes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ambiente",
+        "Type": "MarceTech.Api.Model.Ambiente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.AmbientesController",
+    "Method": "ExcluirAmbiente",
+    "RelativePath": "Ambientes",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.CategoriasController",
+    "Method": "ListarCategorias",
+    "RelativePath": "Categorias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.CategoriasController",
+    "Method": "GravarCategoria",
+    "RelativePath": "Categorias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Categoria",
+        "Type": "MarceTech.Api.Controllers.CategoriaModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.CategoriasController",
+    "Method": "ExcluirCategoria",
+    "RelativePath": "Categorias",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ClientesController",
+    "Method": "Excluir",
+    "RelativePath": "Clientes",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ClientesController",
+    "Method": "CarregarDados",
+    "RelativePath": "Clientes/CarregarDados",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ClientesController",
+    "Method": "CriarOrcamentoCliente",
+    "RelativePath": "Clientes/CriarOrcamentoCliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orcamentoClienteModel",
+        "Type": "MarceTech.Api.Controllers.OrcamentoClienteModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ClientesController",
+    "Method": "GravarDados",
+    "RelativePath": "Clientes/GravarDados",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteModel",
+        "Type": "MarceTech.Api.Controllers.ClienteModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ClientesController",
+    "Method": "Listar",
+    "RelativePath": "Clientes/Listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ItensCategoriaController",
+    "Method": "ListarItensCategoria",
+    "RelativePath": "ItensCategoria",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCategoria",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ItensCategoriaController",
+    "Method": "SalvarItemCategoria",
+    "RelativePath": "ItensCategoria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itensCategoriaModel",
+        "Type": "MarceTech.Api.Controllers.ItensCategoriaModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarceTech.Api.Controllers.ItensCategoriaController",
+    "Method": "ExcluirItemCategoria",
+    "RelativePath": "ItensCategoria",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

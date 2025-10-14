@@ -1,0 +1,56 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card h2, .card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #1A237E;
+}
+
+.card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1A237E;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.noticias ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.noticias li {
+  margin-bottom: 8px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.noticias li:before {
+  content: "•";
+  color: #1A237E;
+  position: absolute;
+  left: 0;
+}

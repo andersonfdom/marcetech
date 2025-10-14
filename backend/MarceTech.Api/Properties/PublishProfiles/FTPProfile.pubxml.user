@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7emAd0yJT0acNyOz1+CG0AAAAAACAAAAAAAQZgAAAAEAACAAAABjt802lKnBYqKplp64mxG8zKmUecnyadjclZHxhv93bgAAAAAOgAAAAAIAACAAAAAqtv798G5cvSCDNIt/SVWf3UfqylNWvEomZ+vf0qrLXUAAAAAALZBWKAr4C+Adj6r3cIn9DLBPiyadqdwdnoihzl2t+9yujdeQVmUs6uK4J9YLbSS0Posx0VekH3Egv5JRslzRQAAAAOFS16uFIgGrUKx+avYw7NGFOk+gymYQHvjdd2p5YdHQ0ptnhAurcW9L7hytRL3zREz1dSRdBMXJfoWmB2ahx7M=</EncryptedPassword>
+    <_PublishTargetUrl>ftp://148.113.189.63/api.marcetech.andersondomingos.com</_PublishTargetUrl>
+    <History>True|2025-10-14T02:25:20.1099522Z||;False|2025-10-13T23:23:51.8129616-03:00||;True|2025-10-13T22:51:16.8526471-03:00||;False|2025-10-13T22:49:36.7290535-03:00||;True|2025-10-13T15:20:17.1596638-03:00||;False|2025-10-13T15:18:52.4316849-03:00||;True|2025-10-13T09:23:31.2950086-03:00||;True|2025-10-13T07:48:22.5719789-03:00||;False|2025-10-13T07:46:59.4849128-03:00||;True|2025-10-13T07:46:12.7928364-03:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>10/11/2025 19:03:23</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>10/11/2025 19:03:23</publishTime>
+    </File>
+    <File Include="MarceTech.Api.deps.json">
+      <publishTime>10/13/2025 23:24:10</publishTime>
+    </File>
+    <File Include="MarceTech.Api.dll">
+      <publishTime>10/13/2025 23:24:10</publishTime>
+    </File>
+    <File Include="MarceTech.Api.exe">
+      <publishTime>10/13/2025 23:24:10</publishTime>
+    </File>
+    <File Include="MarceTech.Api.pdb">
+      <publishTime>10/13/2025 23:24:10</publishTime>
+    </File>
+    <File Include="MarceTech.Api.runtimeconfig.json">
+      <publishTime>10/13/2025 07:44:57</publishTime>
+    </File>
+    <File Include="MarceTech.Api.staticwebassets.endpoints.json">
+      <publishTime>10/13/2025 07:45:03</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <publishTime>08/20/2025 02:25:54</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.dll">
+      <publishTime>08/20/2025 02:26:30</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>08/20/2025 02:26:50</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Caching.Abstractions.dll">
+      <publishTime>08/19/2025 19:14:08</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Caching.Memory.dll">
+      <publishTime>08/19/2025 19:18:12</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
+      <publishTime>08/19/2025 19:14:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>08/19/2025 19:12:48</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.dll">
+      <publishTime>08/19/2025 19:13:30</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>08/19/2025 19:17:56</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.dll">
+      <publishTime>08/19/2025 19:18:10</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>08/19/2025 19:16:56</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Primitives.dll">
+      <publishTime>08/19/2025 19:13:06</publishTime>
+    </File>
+    <File Include="Microsoft.OpenApi.dll">
+      <publishTime>03/06/2024 13:00:56</publishTime>
+    </File>
+    <File Include="MySqlConnector.dll">
+      <publishTime>11/12/2024 09:50:50</publishTime>
+    </File>
+    <File Include="Pomelo.EntityFrameworkCore.MySql.dll">
+      <publishTime>08/17/2025 19:09:22</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.Swagger.dll">
+      <publishTime>05/21/2024 13:42:50</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <publishTime>05/21/2024 13:42:58</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <publishTime>05/21/2024 13:42:50</publishTime>
+    </File>
+    <File Include="System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>08/19/2025 19:17:02</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>10/13/2025 23:24:10</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
