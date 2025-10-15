@@ -1,10 +1,5 @@
 🚀 MarceTech - Sistema Completo de Gestão
 <div align="center">
-https://img.shields.io/badge/Status-Em%2520Desenvolvimento-yellow
-https://img.shields.io/badge/Backend-ASP.NET%2520Core-blue
-https://img.shields.io/badge/Frontend-React-61dafb
-https://img.shields.io/badge/Database-MySQL-orange
-
 Sistema profissional para gestão comercial, orçamentos e produção
 
 </div>
@@ -226,9 +221,6 @@ Adicionar monitoramento e métricas
 
 🤝 Contato
 Desenvolvido com 💙 por um profissional apaixonado por tecnologia
-
-https://img.shields.io/badge/LinkedIn-Connect-blue
-https://img.shields.io/badge/GitHub-Follow-black
 
 <div align="center">
 "Código não é apenas instruções para máquinas, é a materialização da solução de problemas reais."
