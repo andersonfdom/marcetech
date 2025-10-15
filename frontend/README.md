@@ -1,11 +1,7 @@
 🚀 MarceTech - Sistema Completo de Gestão
 <div align="center">
-https://img.shields.io/badge/Status-Em%2520Desenvolvimento-yellow
-https://img.shields.io/badge/Backend-ASP.NET%2520Core-blue
-https://img.shields.io/badge/Frontend-React-61dafb
-https://img.shields.io/badge/Database-MySQL-orange
 
-Sistema profissional para gestão comercial, orçamentos e produção
+  Sistema profissional para gestão comercial, orçamentos e produção
 
 </div>
 📋 Sobre o Projeto
