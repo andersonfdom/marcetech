@@ -5,7 +5,6 @@ import Header from './Header.js';
 import ModalExclusao from './ModalExclusao.js';
 import Dashboard from '../Dashboard/Dashboard.js';
 import Clientes from '../Clientes/Clientes.js';
-import CadastroCliente from '../Clientes/CadastroCliente.js';
 import Materials from '../Materials/Materials.js'; // Importação adicionada
 import Orcamentos from '../Orcamentos/Orcamentos.js';
 import '../../styles/Layout.css';
@@ -39,8 +38,6 @@ const Layout = () => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/clientes" element={<Clientes />} />
-            <Route path="/clientes/cadastro" element={<CadastroCliente />} />
-            <Route path="/clientes/cadastro/:id" element={<CadastroCliente />} />
             <Route path="/materials" element={<Materials />} /> {/* Rota atualizada */}
             <Route path="/orcamento" element={<Orcamentos />} />
             <Route path="/contrato" element={<div>Contratos - Em Desenvolvimento</div>} />

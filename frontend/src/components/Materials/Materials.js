@@ -632,7 +632,7 @@ const Materials = () => {
                       value={buscaAmbientes}
                       onChange={(e) => setBuscaAmbientes(e.target.value)}
                     />
-
+                    <br />  
                     <table className="materials-table">
                       <thead>
                         <tr className="header">
@@ -768,7 +768,7 @@ const Materials = () => {
                     value={buscaCategorias}
                     onChange={(e) => setBuscaCategorias(e.target.value)}
                   />
-
+     <br />  
                   <table className="materials-table">
                     <thead>
                       <tr className="header">

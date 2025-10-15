@@ -1,70 +1,236 @@
-# Getting Started with Create React App
+🚀 MarceTech - Sistema Completo de Gestão
+<div align="center">
+https://img.shields.io/badge/Status-Em%2520Desenvolvimento-yellow
+https://img.shields.io/badge/Backend-ASP.NET%2520Core-blue
+https://img.shields.io/badge/Frontend-React-61dafb
+https://img.shields.io/badge/Database-MySQL-orange
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema profissional para gestão comercial, orçamentos e produção
 
-## Available Scripts
+</div>
+📋 Sobre o Projeto
+O MarceTech é um sistema completo desenvolvido para otimizar processos comerciais e de produção, oferecendo soluções integradas para gestão de clientes, orçamentos, materiais e muito mais. Este projeto demonstra habilidades full-stack com tecnologias modernas e boas práticas de desenvolvimento.
 
-In the project directory, you can run:
+🎯 Destaques do Projeto
+Arquitetura bem definida com separação clara entre frontend e backend
 
-### `npm start`
+API RESTful completa com documentação Swagger
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Interface moderna e responsiva em React
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Integração com MySQL via Entity Framework Core
 
-### `npm test`
+Validações robustas no servidor e cliente
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Sistema de gestão comercial completo
 
-### `npm run build`
+🏗️ Arquitetura do Sistema
+text
+marcetech/
+├── 📁 backend/          # API ASP.NET Core
+│   ├── Controllers/     # Endpoints da API
+│   ├── Models/          # Modelos de dados
+│   └── MarceTechContext.cs
+├── 📁 frontend/         # Aplicação React
+│   ├── components/      # Componentes reutilizáveis
+│   ├── pages/           # Páginas da aplicação
+│   └── styles/          # Estilos CSS
+└── 📄 README.md
+🛠️ Tecnologias Utilizadas
+Backend
+ASP.NET Core - Framework web
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Entity Framework Core - ORM para acesso a dados
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pomelo.EntityFrameworkCore.MySql - Provider MySQL
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Swagger/OpenAPI - Documentação da API
 
-### `npm run eject`
+CORS - Configuração de políticas de origem cruzada
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Frontend
+React 18.2.0 - Biblioteca de interface
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React Router DOM 6.8.0 - Roteamento
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+CSS Modules - Estilização componentizada
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Componentes Funcionais - Com hooks modernos
 
-## Learn More
+Banco de Dados
+MySQL - Banco de dados relacional
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Scaffolding - Geração automática de modelos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+⚙️ Funcionalidades Implementadas
+✅ Módulos Concluídos
+Backend (API)
+Ambientes - CRUD completo
 
-### Code Splitting
+Categorias - Gestão com remoção em cascata
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clientes - Cadastro com validações de CPF/CNPJ
 
-### Analyzing the Bundle Size
+Itens de Categoria - Gestão de produtos/serviços
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Orçamentos - Criação vinculada a clientes
 
-### Making a Progressive Web App
+Frontend (Interface)
+Dashboard - Visão geral do sistema
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Gestão de Clientes - Cadastro e listagem
 
-### Advanced Configuration
+Catálogo de Materiais - Controle de produtos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Sistema de Orçamentos - Criação e acompanhamento
 
-### Deployment
+Layout Responsivo - Sidebar colapsável e design adaptativo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+🔄 Em Desenvolvimento
+Módulo de Contratos
 
-### `npm run build` fails to minify
+Gestão Comercial Avançada
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Gestão de Produção
+
+Cronogramas e Timeline
+
+Sistema de Usuários e Permissões
+
+🚀 Como Executar o Projeto
+Pré-requisitos
+.NET 6.0 ou superior
+
+Node.js 16+ e npm
+
+MySQL Server
+
+Git
+
+1. Clone o repositório
+bash
+git clone <url-do-repositorio>
+cd marcetech
+2. Configuração do Backend
+bash
+cd backend
+
+# Sincronizar banco de dados
+dotnet ef dbcontext scaffold "server=148.113.189.63;database=marcetech;uid=marcetech;pwd=36R#e*3V&tO1@uI7zHcQYeD3;" Pomelo.EntityFrameworkCore.MySql -o Model -f -c MarceTechContext
+
+# Restaurar pacotes
+dotnet restore
+
+# Executar aplicação
+dotnet run
+API disponível em: https://localhost:7000
+Swagger UI: https://localhost:7000/swagger
+
+3. Configuração do Frontend
+bash
+cd frontend
+
+# Instalar dependências
+npm install
+
+# Executar em desenvolvimento
+npm start
+Frontend disponível em: http://localhost:3000
+
+📊 Características Técnicas Destacadas
+Backend Excellence
+Tratamento de Erros - Try/catch em todos os endpoints
+
+Validações de Negócio - CPF/CNPJ, email, duplicatas
+
+Padrão REST - Verbos HTTP corretos e status codes apropriados
+
+Injeção de Dependência - Configuração nativa do ASP.NET Core
+
+Migrações EF Core - Controle de versão do banco
+
+Frontend Moderno
+Componentização - Código reutilizável e manutenível
+
+Roteamento Declarativo - Navegação fluida entre páginas
+
+Estado Local - Gerenciamento com useState hooks
+
+CSS Modular - Estilos escopados por componente
+
+UX/UI - Interface intuitiva com feedback visual
+
+Integração Robust
+Comunicação API - Fetch/axios para consumo de endpoints
+
+CORS Configurado - Comunicação entre domínios
+
+Formatação de Dados - Models compatíveis entre frontend/backend
+
+Validações Sincronizadas - Regras consistentes no client e server
+
+🎯 Habilidades Demonstradas
+Desenvolvimento Backend
+Arquitetura de APIs RESTful
+
+Entity Framework Core e ORM
+
+MySQL e modelagem de dados
+
+Validações e tratamento de exceções
+
+Segurança básica (CORS, validações)
+
+Documentação com Swagger
+
+Desenvolvimento Frontend
+React com Hooks modernos
+
+Gerenciamento de estado e props
+
+Roteamento com React Router
+
+Componentização e reutilização
+
+CSS e design responsivo
+
+Consumo de APIs REST
+
+DevOps e Ferramentas
+Controle de versão com Git
+
+Gerenciamento de dependências (NuGet, npm)
+
+Build e deployment scripts
+
+Configuração de ambiente
+
+Documentação técnica
+
+📈 Próximos Passos Planejados
+Implementar autenticação JWT
+
+Adicionar testes unitários e de integração
+
+Criar sistema de relatórios
+
+Implementar upload de arquivos
+
+Adicionar notificações em tempo real
+
+Criar versão PWA (Progressive Web App)
+
+Implementar logging estruturado
+
+Adicionar monitoramento e métricas
+
+🤝 Contato
+Desenvolvido com 💙 por um profissional apaixonado por tecnologia
+
+https://img.shields.io/badge/LinkedIn-Connect-blue
+https://img.shields.io/badge/GitHub-Follow-black
+
+<div align="center">
+"Código não é apenas instruções para máquinas, é a materialização da solução de problemas reais."
+
+</div>
